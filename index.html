@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+      .h{
+        height: 562px;
+      }
+      .h-3{
+        height: 300px;
+      }
+      body{
+        font-family: "Public Sans", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar Start -->
+    <nav class="container navbar navbar-dark bg-body-tertiary fixed-top">
+      <div class="container">
+        <div class="d-flex">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbarLeft" aria-controls="offcanvasDarkNavbarLeft" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <form class="d-flex" role="search">
+            <button type="submit" class="btn btn-search pe-1">
+              <i class="fa fa-search search-icon"></i>
+            </button><input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          </form>
+          </div>
+          <a class="navbar-brand text-black">
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-layer-group"></i>
+          </a>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbarLeft" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><a class="bg-black" href="#"><img src="data:image/png;base64,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" height="20"></a></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dashboard
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Dashboard 1</a></li>
+            </ul>
+          </li>
+        </ul>
+        <br><br>
+        <p class="fs-6 text-light">Components</p>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+            <i class="fa-solid fa-layer-group"></i> &nbsp;&nbsp; Base
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Avators</a></li>
+              <li><a class="dropdown-item" href="#">Buttons</a></li>
+              <li><a class="dropdown-item" href="#">Gris System</a></li>
+              <li><a class="dropdown-item" href="#">Panels</a></li>
+              <li><a class="dropdown-item" href="#">Notification</a></li>
+              <li><a class="dropdown-item" href="#">Sweet Alert</a></li>
+              <li><a class="dropdown-item" href="#">Font Awesome Icons</a></li>
+              <li><a class="dropdown-item" href="#">Simple Line Icon</a></li>
+              <li><a class="dropdown-item" href="#">Typography</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-th-list"></i> &nbsp;&nbsp; Sider Layout
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Sider bar 2</a></li>
+              <li><a class="dropdown-item" href="#">Icon Menu</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-pen-square"></i> &nbsp;&nbsp; Forms
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Basic Forms</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-pen-square"></i>&nbsp;&nbsp; Tables
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Basic Table</a></li>
+              <li><a class="dropdown-item" href="#">Datatable</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp; Map
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Google Map</a></li>
+              <li><a class="dropdown-item" href="#">Jsvectormap</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="far fa-chart-bar"></i> &nbsp;&nbsp; Charts
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Chart js</a></li>
+              <li><a class="dropdown-item" href="#">Sparkline</a></li>
+            </ul>
+          </li>
+        </ul>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-desktop"></i> &nbsp;&nbsp; Widgets 
+        </a>
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-file"></i> &nbsp;&nbsp;  Documentation 
+        </a>
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-bars"></i> &nbsp;&nbsp; Memu Levels
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="#">Level 1</a></li>
+              <li><a class="dropdown-item" href="#">Level 1</a></li>
+              <li><a class="dropdown-item" href="#">Level 1</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Dashboard start -->
+    <div class="container mt-5 pt-5">
+      <div class="row d-flex justify-content-between align-content-center">
+        <div class="col-12 col-md-6 mb-3 text-start">
+            <h1 class="text-black fs-4">Dashboard</h1>
+            <p class="text-black">Free Bootstrap 5 Admin Dashboard</p>
+        </div>
+        <div class="col-12 col-md-6 text-end gap-5">
+            <button type="button" class="btn btn-white text-info rounded-pill" disabled>Manage</button>
+            <button type="button" class="btn btn-primary rounded-pill" disabled>Add Customer</button>
+        </div>
+      </div>
+    </div>
+    <!-- Dashboard end -->
+
+     <!-- Box Start -->
+  <div class="container">
+    <div class="row g-5 "> 
+      
+      <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center shadow p-3 mb-5 bg-white rounded">
+        <img src="https://img.freepik.com/premium-vector/man-with-medal-his-neck-is-shown-red-circle_1256222-3749.jpg?w=740" class="img-fluid me-3" style="max-width: 80px;">
+        <div class="d-block">
+          <p class="fs-5 mb-0">Visitors</p>
+          <strong>1,294</strong>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center shadow p-3 mb-5 bg-white rounded">
+        <img src="https://t4.ftcdn.net/jpg/07/74/77/65/240_F_774776564_9AepaEYULQmjIF6elbtUYJyXyhUVjQea.jpg" class="img-fluid me-3" style="max-width: 80px;">
+        <div class="d-block">
+          <p class="fs-5 mb-0">Subscribers</p>
+          <strong>1303</strong>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center shadow p-3 mb-5 bg-white rounded">
+        <img src="https://t4.ftcdn.net/jpg/06/86/51/35/240_F_686513582_AaJJ7UgCW80UTGOn7cpmJ7uReEeQzgIH.jpg" class="img-fluid me-3" style="max-width: 80px;">
+        <div class="d-block">
+          <p class="fs-5 mb-0">Sales</p>
+          <strong>$ 1,345</strong>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center shadow p-3 mb-5 bg-white rounded">
+        <img src="https://t4.ftcdn.net/jpg/01/38/68/39/240_F_138683961_ncOVcRh8Md9wLk3T4mSjffNxiUdi6T7k.jpg" class="img-fluid me-3" style="max-width: 80px;">
+        <div class="d-block">
+          <p class="fs-5 mb-0">Order</p>
+          <strong>576</strong>
+        </div>
+      </div>
+      
+    </div>      
+  </div>
+<!-- Box End -->
+    <!-- Graph Ratio Start -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <img src="card-ratio1.jpg" class="img-fluid h shadow bg-white rounded">
+    </div>
+    <div class="col-12 col-lg-6">
+      <img src="./card-ratio2.jpg" class="img-fluid h-3">
+      <img src="./card-ratio3.jpg" class="img-fluid h-3">
+    </div>
+  </div>
+</div>
+<!-- Graph Ratio End -->
+
+<!-- Table with World Map Start -->
+ <!-- Geolocation start -->
+ <div class="container mt-5 pt-5">
+  <div class="row d-flex justify-content-between align-content-center shadow p-3 mb-5 bg-white rounded">
+    <div class="col-12 col-md-6 mb-3 text-start">
+        <h1 class="text-black fs-4">Users Geolocation</h1>
+        <p class="text-black">Free Bootstrap 5 Admin Dashboard</p>
+    </div>
+    <div class="col-12 col-md-6 text-end">
+      <button class="btn btn-icon btn-link btn-primary btn-xs">
+        <span class="fa fa-angle-down"></span>
+      </button>
+      <button class="btn btn-icon btn-link btn-primary btn-xs btn-refresh-card">
+        <span class="fa fa-sync-alt"></span>
+      </button>
+      <button class="btn btn-icon btn-link btn-primary btn-xs">
+        <span class="fa fa-times"></span>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Geolocation end -->
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <table class="table table-striped shadow p-3 mb-5 bg-white rounded">
+        <thead>
+          <tr>
+            <th scope="col">Flag</th>
+            <th scope="col">Country</th>
+            <th scope="col">Users</th>
+            <th scope="col">Percentage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="https://themewagon.github.io/kaiadmin-lite/assets/img/flags/id.png" alt="Indonesia Flag" class="img-fluid" width="24px"></td>
+            <td>Indonesia</td>
+            <td>2,320</td>
+            <td>42.18%</td>
+          </tr>
+          <tr>
+            <td><img src="https://themewagon.github.io/kaiadmin-lite/assets/img/flags/us.png" alt="USA Flag" class="img-fluid" width="24px"></td>
+            <td>USA</td>
+            <td>240</td>
+            <td>4.36%</td>
+          </tr>
+          <tr>
+            <td><img src="https://themewagon.github.io/kaiadmin-lite/assets/img/flags/au.png" alt="Australia Flag" class="img-fluid" width="24px"></td>
+            <td>Australia</td>
+            <td>119</td>
+            <td>2.16%</td>
+          </tr>
+          <tr>
+            <td><img src="https://themewagon.github.io/kaiadmin-lite/assets/img/flags/ru.png" alt="Russia Flag" class="img-fluid" width="24px"></td>
+            <td>Russia</td>
+            <td>1,001</td>
+            <td>19.65%</td>
+          </tr>
+          <tr>
+            <td><img src="https://themewagon.github.io/kaiadmin-lite/assets/img/flags/cn.png" alt="China Flag" class="img-fluid" width="24px"></td>
+            <td>China</td>
+            <td>1,100</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td><img src="https://themewagon.github.io/kaiadmin-lite/assets/img/flags/br.png" alt="Brazil Flag" class="img-fluid" width="24px"></td>
+            <td>Brazil</td>
+            <td>640</td>
+            <td>11.63%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 col-lg-6 pb-3">
+      <img src="https://img.freepik.com/free-vector/world-map-business-infographic_52683-26898.jpg?ga=GA1.1.1933705408.1726492233&semt=ais_hybrid" class="img-fluid shadow bg-white rounded h-75" alt="World Map Infographic">
+    </div>
+  </div>
+</div>
+<!-- Table with World Map End -->
+     <!-- New Customers & Transaction History Start -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="shadow p-3 mb-5 bg-white rounded">
+        <div class="d-flex justify-content-between align-content-center">
+          <h1 class="fs-4">New Customers</h1>
+          <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+        </div>
+        <div class="d-flex justify-content-between align-content-center">
+            <p>Jimmy Denis
+              <br><span>Graphic Designer</span>
+            </p>
+            <div>
+              <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center">
+            <p>Chandra Felix
+              <br><span>Sales Promotion</span>
+            </p>
+            <div>
+              <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center">
+            <p>Talha
+              <br><span>Front End Designer</span>
+            </p>
+            <div>
+              <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center">
+            <p>Chad
+              <br><span>CEO Zeleaf</span>
+            </p>
+            <div>
+              <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center">
+            <p>Hizrian
+              <br><span>Web Designer</span>
+            </p>
+            <div>
+              <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between align-content-center">
+            <p>Farrah
+              <br><span>Marketing</span>
+            </p>
+            <div>
+              <button class="btn btn-icon btn-link op-8 me-1">
+                <i class="far fa-envelope"></i>
+              </button>
+              <button class="btn btn-icon btn-link btn-danger op-8">
+                <i class="fas fa-ban"></i>
+              </button>
+            </div>
+          </div>
+        <!-- Additional customer entries should be structured similarly -->
+      </div>
+    </div>
+    <div class="col-md-8">
+        <div class="shadow p-3 mb-5 bg-white rounded">
+            <div class="d-flex justify-content-between align-content-center">
+              <h1 class="fs-4">Transaction History</h1>
+              <button class="btn btn-icon btn-clean me-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-ellipsis-h"></i>
+              </button>
+            </div>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <td scope="col">Payment Number</td>
+                  <td scope="col">Date & Time</td>
+                  <td scope="col">Amount</td>
+                  <td scope="col">Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                </tr>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                </tr>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                </tr>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                </tr>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                </tr>
+                <tr>
+                  <td scope="row"><button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                    <i class="fa fa-check"></i>
+                  </button>Payment from #10231</td>
+                  <td>Mar 19, 2020, 2.45pm</td>
+                  <td>$250.00	</td>
+                  <td>
+                    <button type="button" class="btn btn-success"style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">Completed</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+  </div>
+</div>
+<!-- New Customers & Transaction History End -->
+
+<!-- Footer Start -->
+ <div class="container">
+  <div class="row shadow-none pt-3 mt-5 bg-light rounded">
+    <div class="col-12 col-md-4 col-lg-4">
+      <a class="text-decoration-none" href="#">ThemeKita</a>
+      <a class="text-decoration-none" href="#">Help</a>
+      <a class="text-decoration-none" href="#">Licenses</a>
+    </div>
+    <div div class="col-12 col-md-4 col-lg-4">
+      <p>2024, made with by <i class="fa-solid fa-heart"></i> <a class="text-decoration-none" href="#">ThemeKita</a></p>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4">
+      <p>Distributed by <a class="text-decoration-none" href="#">ThemeWagon</a></p>
+    </div>
+   </div>
+ </div>
+<!-- Footer End -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
